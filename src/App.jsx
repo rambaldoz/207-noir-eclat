@@ -65,12 +65,12 @@ const lookbook = [
   },
   {
     image: "/assets/lookbook/fine-jewelry-details-1.webp",
-    label: "Fine jewelry details 1",
+    label: "Fine jewelry earrings",
     category: "Jewelry",
   },
   {
     image: "/assets/lookbook/fine-jewelry-details-2.webp",
-    label: "Fine jewelry details 2",
+    label: "Gorgeous bracelet",
     category: "Jewelry",
   },
   {
@@ -109,8 +109,9 @@ function Header() {
   return (
     <header className={`site-header ${isMenuOpen ? "menu-open" : ""}`}>
       <a className="brand" href="#top" aria-label="NOIR ECLAT home" onClick={closeMenu}>
-        <span className="brand-mark">◇</span>
-        <span>NOIR ECLAT</span>
+        {/* <span className="brand-mark">◇</span>
+        <span>NOIR ECLAT</span> */}
+        <img src="/assets/logo.png" alt="" />
       </a>
       <nav className="nav-links" aria-label="Primary navigation">
         {navItems.map((item) => (
@@ -184,7 +185,7 @@ function Story() {
           precision, using rare materials and timeless techniques passed down
           through generations. We don't follow trends. We create timeless pieces of individuality.
         </p>
-        <a className="outline-button" href="#journal">
+        <a className="outline-button" href="#our-story">
           Discover Our Story <Icon name="arrow" />
         </a>
       </div>
@@ -251,22 +252,6 @@ function SocialProof() {
       <div className="testimonial">
         <div className="testimonial-header">
           <p className="eyebrow">What Our Clients Say</p>
-          {/* <div className="testimonial-controls" aria-label="Testimonial controls">
-            <button
-              type="button"
-              aria-label="Previous testimonial"
-              onClick={() => goToTestimonial(activeTestimonial - 1)}
-            >
-              <Icon name="left" />
-            </button>
-            <button
-              type="button"
-              aria-label="Next testimonial"
-              onClick={() => goToTestimonial(activeTestimonial + 1)}
-            >
-              <Icon name="arrow" />
-            </button>
-          </div> */}
         </div>
         <div className="testimonial-quote">
           <img src="/assets/icon-quote.png" alt="quote" />
@@ -299,24 +284,25 @@ function Footer() {
       <div className="footer-grid">
         <div>
           <a className="brand footer-brand" href="#top">
-            <span className="brand-mark">◇</span>
-            <span>NOIR ECLAT</span>
+            {/* <span className="brand-mark">◇</span>
+            <span>NOIR ECLAT</span> */}
+            <img src="/assets/logo.png" alt="" />
           </a>
           <p>
             Timeless elegance. Rare craftsmanship. Made for those who notice
             details others overlook.
           </p>
           <div className="socials" aria-label="Social links">
-            <a href="#contact" aria-label="Instagram">
+            <a href="https://www.instagram.com" aria-label="Instagram">
               <Icon name="instagram" />
             </a>
-            <a href="#contact" aria-label="Facebook">
+            <a href="https://www.facebook.com" aria-label="Facebook">
               <Icon name="facebook" />
             </a>
-            <a href="#contact" aria-label="Pinterest">
+            <a href="https://www.pinterest.com" aria-label="Pinterest">
               <Icon name="pinterest" />
             </a>
-            <a href="#contact" aria-label="TikTok">
+            <a href="https://www.tiktok.com" aria-label="TikTok">
               <Icon name="tiktok" />
             </a>
           </div>
