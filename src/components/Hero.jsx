@@ -16,16 +16,28 @@ const heroSlides = [
     cta: "Explore Collection",
   },
   {
-    eyebrow: "Private Editions",
+    eyebrow: "Signature Gold Ring",
     title: (
       <>
-        Rare Notes, <br />
-        Refined by Hand
+        Bold Elegance, <br />
+        Carved in Gold
       </>
     ),
-    copy: "Signature fragrance and fine jewelry pieces composed for intimate rituals and lasting impressions.",
+    copy: "A statement ring shaped with warm gold, dark gemstone depth, and refined details made to command quiet attention.",
     image: "/assets/slider/hero-2.webp",
-    cta: "Discover More",
+    cta: "View The Ring",
+  },
+  {
+    eyebrow: "Fine Gold Necklace",
+    title: (
+      <>
+        Grace, <br />
+        Suspended in Gold
+      </>
+    ),
+    copy: "An elegant necklace with delicate curves, luminous gold tones, and a timeless silhouette made for evening refinement.",
+    image: "/assets/slider/hero-3.webp",
+    cta: "Discover The Necklace",
   },
 ];
 
@@ -41,6 +53,17 @@ export default function Hero() {
     }
 
     setActiveSlide(nextSlide);
+  };
+
+  const handleScrollCueClick = (event) => {
+    const collection = document.querySelector("#collection");
+
+    if (!collection) {
+      return;
+    }
+
+    event.preventDefault();
+    collection.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   useEffect(() => {
@@ -129,7 +152,12 @@ export default function Hero() {
           </button>
         </div>
       )}
-      <a className="scroll-cue" href="#collection" aria-label="Scroll to collection">
+      <a
+        className="scroll-cue"
+        href="#collection"
+        aria-label="Scroll to collection"
+        onClick={handleScrollCueClick}
+      >
         <span>
           <Icon name="down" />
         </span>
