@@ -100,15 +100,21 @@ const testimonials = [
 const navItems = ["Home", "Collection", "Story", "Lookbook", "Journal", "Contact"];
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header className="site-header">
-      <a className="brand" href="#top" aria-label="NOIR ECLAT home">
+    <header className={`site-header ${isMenuOpen ? "menu-open" : ""}`}>
+      <a className="brand" href="#top" aria-label="NOIR ECLAT home" onClick={closeMenu}>
         <span className="brand-mark">◇</span>
         <span>NOIR ECLAT</span>
       </a>
       <nav className="nav-links" aria-label="Primary navigation">
         {navItems.map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`}>
+          <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>
             {item}
           </a>
         ))}
@@ -124,7 +130,22 @@ function Header() {
           <Icon name="bag" />
           <span>0</span>
         </button>
+        <button
+          type="button"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
+          className="menu-toggle"
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <Icon name={isMenuOpen ? "close" : "menu"} />
+        </button>
       </div>
+      <button
+        type="button"
+        className="menu-backdrop"
+        aria-label="Close menu"
+        onClick={closeMenu}
+      />
     </header>
   );
 }
@@ -286,10 +307,18 @@ function Footer() {
             details others overlook.
           </p>
           <div className="socials" aria-label="Social links">
-            <a href="#contact">ig</a>
-            <a href="#contact">fb</a>
-            <a href="#contact">pt</a>
-            <a href="#contact">tk</a>
+            <a href="#contact" aria-label="Instagram">
+              <Icon name="instagram" />
+            </a>
+            <a href="#contact" aria-label="Facebook">
+              <Icon name="facebook" />
+            </a>
+            <a href="#contact" aria-label="Pinterest">
+              <Icon name="pinterest" />
+            </a>
+            <a href="#contact" aria-label="TikTok">
+              <Icon name="tiktok" />
+            </a>
           </div>
         </div>
         <div>
@@ -312,20 +341,22 @@ function Footer() {
           <a href="#story">Our Story</a>
           <a href="#lookbook">Lookbook</a>
           <a href="#journal">Journal</a>
-          <a href="#contact">Contact</a>
         </div>
         <div>
           <h3>Customer Care</h3>
-          <a href="#contact">Shipping & Delivery</a>
-          <a href="#contact">Returns & Exchanges</a>
-          <a href="#contact">FAQs</a>
-          <a href="#contact">Care Guide</a>
+          <a href="#shipping">Shipping & Delivery</a>
+          <a href="#returns">Returns & Exchanges</a>
+          <a href="#faqs">FAQs</a>
+          <a href="#care-guide">Care Guide</a>
           <a href="#contact">Contact Us</a>
         </div>
       </div>
       <div className="footer-bottom">
         <span>© 2024 NOIR ECLAT. All rights reserved.</span>
-        <span>Privacy Policy&nbsp;&nbsp;&nbsp;&nbsp;Terms & Conditions</span>
+        <ul>
+          <li><a href="#privacy-policy">Privacy Policy</a></li>
+          <li><a href="#terms-and-conditions">Terms & Conditions</a></li>
+        </ul>
       </div>
     </footer>
   );

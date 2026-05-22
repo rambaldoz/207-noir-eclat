@@ -25,7 +25,7 @@ const heroSlides = [
     ),
     copy: "A statement ring shaped with warm gold, dark gemstone depth, and refined details made to command quiet attention.",
     image: "/assets/slider/hero-2.webp",
-    cta: "View The Ring",
+    cta: "Explore Collection",
   },
   {
     eyebrow: "Fine Gold Necklace",
@@ -37,7 +37,7 @@ const heroSlides = [
     ),
     copy: "An elegant necklace with delicate curves, luminous gold tones, and a timeless silhouette made for evening refinement.",
     image: "/assets/slider/hero-3.webp",
-    cta: "Discover The Necklace",
+    cta: "Explore Collection",
   },
 ];
 
