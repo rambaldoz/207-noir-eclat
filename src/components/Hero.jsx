@@ -1,45 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Icon from "./Icon.jsx";
-
-const heroSlides = [
-  {
-    eyebrow: "Luxury Perfume & Fine Jewelry",
-    title: (
-      <>
-        Luxury, <br />
-        Distilled Into Light
-      </>
-    ),
-    copy: "Timeless craftsmanship. Rare materials. Designed for those who value the exceptional.",
-    image: "/assets/slider/hero-1.webp",
-    cta: "Explore Collection",
-  },
-  {
-    eyebrow: "Signature Gold Ring",
-    title: (
-      <>
-        Bold Elegance, <br />
-        Carved in Gold
-      </>
-    ),
-    copy: "A statement ring shaped with warm gold, dark gemstone depth, and refined details made to command quiet attention.",
-    image: "/assets/slider/hero-2.webp",
-    cta: "Explore Collection",
-  },
-  {
-    eyebrow: "Fine Gold Necklace",
-    title: (
-      <>
-        Grace, <br />
-        Suspended in Gold
-      </>
-    ),
-    copy: "An elegant necklace with delicate curves, luminous gold tones, and a timeless silhouette made for evening refinement.",
-    image: "/assets/slider/hero-3.webp",
-    cta: "Explore Collection",
-  },
-];
+import { heroSlides } from "./../data/constants.jsx";
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);

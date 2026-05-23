@@ -931,15 +931,20 @@ h2 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1.45fr 0.7fr 0.9fr;
+  grid-template-columns: 1.1fr 1.45fr 1.6fr;
   gap: clamp(2rem, 6vw, 5rem);
   width: min(100% - 7.5rem, 1220px);
   margin: 0 auto;
   padding: 3.1rem 0 2.5rem;
 }
 
-.footer-brand {
-  margin-bottom: 1.15rem;
+.footer-grid div:nth-child(3):not(.socials) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-grid div:nth-child(3) div {
+  width: 50%;
 }
 
 .footer p,
@@ -959,6 +964,7 @@ h2 {
 }
 
 .footer-bottom ul {
+  margin: 0;
   padding: 0;
   display: flex;
   gap: 1rem;
@@ -1424,6 +1430,10 @@ h2 {
 
   .proof .testimonial .dots {
     margin: 1.6rem 0 0;
+  }
+
+  .newsletter {
+    width: 100%;
   }
 }
 

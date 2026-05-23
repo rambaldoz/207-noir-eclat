@@ -3,101 +3,7 @@ import Hero from "./components/Hero.jsx";
 import Icon from "./components/Icon.jsx";
 import ProductCard from "./components/ProductCard.jsx";
 import Brands from "./components/Brands.jsx";
-
-const brands = [
-  {
-    name: "vogue",
-    image: "/assets/brands/brand-vogue.webp",
-  },
-  {
-    name: "bazaar",
-    image: "/assets/brands/brand-bazaar.webp",
-  },
-  {
-    name: "elle",
-    image: "/assets/brands/brand-elle.webp",
-  },
-  {
-    name: "forbes",
-    image: "/assets/brands/brand-forbes.webp",
-  }
-];
-
-const products = [
-    {
-        name: "Noir Diamond Ring",
-        price: "$3,800",
-        image: "/assets/products/noir-diamond-ring.webp",
-    },
-    {
-        name: "Eclat Gold Bracelet",
-        price: "$2,450",
-        image: "/assets/products/eclat-gold-bracelet.webp",
-    },
-    {
-        name: "Velvet Oud Perfume",
-        price: "$250",
-        image: "/assets/products/velvet-oud-perfume.webp",
-    },
-    {
-        name: "Midnight Pearl Necklace",
-        price: "$2,950",
-        image: "/assets/products/midnight-pearl-necklace.webp",
-    },
-];
-
-
-const lookbook = [
-  {
-    image: "/assets/lookbook/layered-gold-styling.webp",
-    label: "Layered gold styling",
-    category: "Jewelry",
-  },
-  {
-    image: "/assets/lookbook/noir-parfum-study.webp",
-    label: "Noir parfum study",
-    category: "Perfume",
-  },
-  {
-    image: "/assets/lookbook/evening-silhouette.webp",
-    label: "Evening silhouette",
-    category: "Lifestyle",
-  },
-  {
-    image: "/assets/lookbook/fine-jewelry-details-1.webp",
-    label: "Fine jewelry earrings",
-    category: "Jewelry",
-  },
-  {
-    image: "/assets/lookbook/fine-jewelry-details-2.webp",
-    label: "Gorgeous bracelet",
-    category: "Jewelry",
-  },
-  {
-    image: "/assets/lookbook/private-salon-mood.webp",
-    label: "Private salon mood",
-    category: "Lifestyle",
-  },
-];
-
-const lookbookTabs = ["All", "Jewelry", "Perfume", "Lifestyle"];
-
-const testimonials = [
-  {
-    quote: "NOIR ECLAT feels less like a brand and more like an atmosphere.",
-    author: "Sophia L.",
-  },
-  {
-    quote: "Every piece feels considered, intimate, and beautifully made.",
-    author: "Amara K.",
-  },
-  {
-    quote: "The perfume lingers with the same quiet elegance as their jewelry.",
-    author: "Celeste M.",
-  },
-];
-
-const navItems = ["Home", "Collection", "Story", "Lookbook", "Journal", "Contact"];
+import { brands, products, lookbook, lookbookTabs, testimonials, navItems } from "./data/constants.jsx";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -108,9 +14,7 @@ function Header() {
 
   return (
     <header className={`site-header ${isMenuOpen ? "menu-open" : ""}`}>
-      <a className="brand" href="#top" aria-label="NOIR ECLAT home" onClick={closeMenu}>
-        {/* <span className="brand-mark">◇</span>
-        <span>NOIR ECLAT</span> */}
+      <a className="brand" href="#top" aria-label="NOIR ÉCLAT home" onClick={closeMenu}>
         <img src="/assets/logo.png" alt="" />
       </a>
       <nav className="nav-links" aria-label="Primary navigation">
@@ -180,7 +84,7 @@ function Story() {
         <p className="eyebrow">Our Story</p>
         <h2>Crafted for Those Who Notice Details</h2>
         <p>
-          NOIR ECLAT is more than a brand. It is a philosophy of elegance,
+          NOIR ÉCLAT is more than a brand. It is a philosophy of elegance,
           refinement, and intentional living. Each piece is crafted with
           precision, using rare materials and timeless techniques passed down
           through generations. We don't follow trends. We create timeless pieces of individuality.
@@ -284,8 +188,6 @@ function Footer() {
       <div className="footer-grid">
         <div>
           <a className="brand footer-brand" href="#top">
-            {/* <span className="brand-mark">◇</span>
-            <span>NOIR ECLAT</span> */}
             <img src="/assets/logo.png" alt="" />
           </a>
           <p>
@@ -321,24 +223,26 @@ function Footer() {
           </form>
         </div>
         <div>
-          <h3>Quick Links</h3>
-          <a href="#top">Home</a>
-          <a href="#collection">Collection</a>
-          <a href="#story">Our Story</a>
-          <a href="#lookbook">Lookbook</a>
-          <a href="#journal">Journal</a>
-        </div>
-        <div>
-          <h3>Customer Care</h3>
-          <a href="#shipping">Shipping & Delivery</a>
-          <a href="#returns">Returns & Exchanges</a>
-          <a href="#faqs">FAQs</a>
-          <a href="#care-guide">Care Guide</a>
-          <a href="#contact">Contact Us</a>
+          <div>
+            <h3>Quick Links</h3>
+            <a href="#top">Home</a>
+            <a href="#collection">Collection</a>
+            <a href="#story">Our Story</a>
+            <a href="#lookbook">Lookbook</a>
+            <a href="#journal">Journal</a>
+          </div>
+          <div>
+            <h3>Customer Care</h3>
+            <a href="#shipping">Shipping & Delivery</a>
+            <a href="#returns">Returns & Exchanges</a>
+            <a href="#faqs">FAQs</a>
+            <a href="#care-guide">Care Guide</a>
+            <a href="#contact">Contact Us</a>
+          </div>
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© 2024 NOIR ECLAT. All rights reserved.</span>
+        <span>© 2024 NOIR ÉCLAT. All rights reserved.</span>
         <ul>
           <li><a href="#privacy-policy">Privacy Policy</a></li>
           <li><a href="#terms-and-conditions">Terms & Conditions</a></li>
