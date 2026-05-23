@@ -33,7 +33,7 @@ export const heroSlides = [
         eyebrow: "Fine Gold Necklace",
         title: (
         <>
-            Grace, <br />
+            Infinite Grace, <br />
             Suspended in Gold
         </>
         ),

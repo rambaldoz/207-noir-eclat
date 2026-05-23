@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "./components/Hero.jsx";
 import Icon from "./components/Icon.jsx";
 import ProductCard from "./components/ProductCard.jsx";
@@ -214,6 +214,18 @@ function SocialProof() {
   const goToTestimonial = (index) => {
     setActiveTestimonial((index + testimonials.length) % testimonials.length);
   };
+
+  useEffect(() => {
+    if (testimonials.length < 2) {
+      return undefined;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveTestimonial((index) => (index + 1) % testimonials.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <section className="proof section-reveal">
