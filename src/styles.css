@@ -1030,7 +1030,7 @@ h2 {
 .mock-page {
   display: grid;
   place-items: center;
-  min-height: 48rem;
+  min-height: 64rem;
   padding: 4.5rem 1rem;
   background:
     linear-gradient(180deg, rgba(5, 5, 5, 0.88), rgba(5, 5, 5, 0.98)),
@@ -1358,7 +1358,7 @@ h2 {
     position: fixed;
     grid-template-columns: 1fr auto;
     width: min(100% - 2rem, 900px);
-    padding: 1.15rem 1rem;
+    padding: 1.15rem 0;
   }
 
   .site-header-solid {
@@ -1458,11 +1458,15 @@ h2 {
   .lookbook-grid figure:nth-child(5) {
     grid-column: span 3;
   }
+
+  .mock-page {
+    min-height: 48rem;
+  }
 }
 
 @media (max-width: 720px) {
   .site-header {
-    padding: 1.25rem 1rem;
+    /* padding: 1.25rem 1rem; */
     background-color: rgba(0, 0, 0, .9);
   }
 

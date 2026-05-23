@@ -38,7 +38,8 @@ function Header({ currentPage, onNavigate }) {
 
   return (
     <>
-    <header className={`site-header ${currentPage !== "home" ? "site-header-solid" : ""} ${isMenuOpen ? "menu-open" : ""}`}>
+    {/* <header className={`site-header ${currentPage !== "home" ? "site-header-solid" : ""} ${isMenuOpen ? "menu-open" : ""}`}> */}
+    <header className={`site-header ${isMenuOpen ? "menu-open" : ""}`}>
       <a className="brand" href="#top" aria-label="NOIR ÉCLAT home" onClick={handleHomeClick}>
         <img src="/assets/logo.png" alt="" />
       </a>
