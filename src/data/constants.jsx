@@ -1,5 +1,49 @@
 import React from "react";
 
+// nav menu items
+export const navItems = ["Home", "Collection", "Story", "Lookbook", "Journal", "Contact"];
+
+// home page slider
+export const heroSlides = [
+    {
+        eyebrow: "Luxury Perfume & Fine Jewelry",
+        title: (
+        <>
+            Luxury, <br />
+            Distilled Into Light
+        </>
+        ),
+        copy: "Timeless craftsmanship. Rare materials. Designed for those who value the exceptional.",
+        image: "/assets/slider/hero-1.webp",
+        cta: "Explore Collection",
+    },
+    {
+        eyebrow: "Signature Gold Ring",
+        title: (
+        <>
+            Bold Elegance, <br />
+            Carved in Gold
+        </>
+        ),
+        copy: "A statement ring shaped with warm gold, dark gemstone depth, and refined details made to command quiet attention.",
+        image: "/assets/slider/hero-2.webp",
+        cta: "Explore Collection",
+    },
+    {
+        eyebrow: "Fine Gold Necklace",
+        title: (
+        <>
+            Grace, <br />
+            Suspended in Gold
+        </>
+        ),
+        copy: "An elegant necklace with delicate curves, luminous gold tones, and a timeless silhouette made for evening refinement.",
+        image: "/assets/slider/hero-3.webp",
+        cta: "Explore Collection",
+    },
+];
+
+// brand images
 export const brands = [
     {
         name: "vogue",
@@ -19,6 +63,7 @@ export const brands = [
     },
 ];
 
+// product infos
 export const products = [
     {
         name: "Noir Diamond Ring",
@@ -42,7 +87,7 @@ export const products = [
     },
 ];
 
-
+// lookbooks
 export const lookbook = [
     {
         image: "/assets/lookbook/layered-gold-styling.webp",
@@ -76,8 +121,10 @@ export const lookbook = [
     },
     ];
 
+// lookbook filters
 export const lookbookTabs = ["All", "Jewelry", "Perfume", "Lifestyle"];
 
+// testimonials
 export const testimonials = [
     {
         quote: "NOIR ÉCLAT feels less like a brand and more like an atmosphere.",
@@ -91,46 +138,4 @@ export const testimonials = [
         quote: "The perfume lingers with the same quiet elegance as their jewelry.",
         author: "Celeste M.",
     },
-];
-
-export const navItems = ["Home", "Collection", "Story", "Lookbook", "Journal", "Contact"];
-
-
-export const heroSlides = [
-  {
-    eyebrow: "Luxury Perfume & Fine Jewelry",
-    title: (
-      <>
-        Luxury, <br />
-        Distilled Into Light
-      </>
-    ),
-    copy: "Timeless craftsmanship. Rare materials. Designed for those who value the exceptional.",
-    image: "/assets/slider/hero-1.webp",
-    cta: "Explore Collection",
-  },
-  {
-    eyebrow: "Signature Gold Ring",
-    title: (
-      <>
-        Bold Elegance, <br />
-        Carved in Gold
-      </>
-    ),
-    copy: "A statement ring shaped with warm gold, dark gemstone depth, and refined details made to command quiet attention.",
-    image: "/assets/slider/hero-2.webp",
-    cta: "Explore Collection",
-  },
-  {
-    eyebrow: "Fine Gold Necklace",
-    title: (
-      <>
-        Grace, <br />
-        Suspended in Gold
-      </>
-    ),
-    copy: "An elegant necklace with delicate curves, luminous gold tones, and a timeless silhouette made for evening refinement.",
-    image: "/assets/slider/hero-3.webp",
-    cta: "Explore Collection",
-  },
 ];

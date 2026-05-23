@@ -5,33 +5,83 @@ import ProductCard from "./components/ProductCard.jsx";
 import Brands from "./components/Brands.jsx";
 import { brands, products, lookbook, lookbookTabs, testimonials, navItems } from "./data/constants.jsx";
 
-function Header() {
+function Header({ currentPage, onNavigate }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
 
+  const closeSearch = () => {
+    setIsSearchOpen(false);
+    setSearchQuery("");
+  };
+
+  const handleHomeClick = () => {
+    closeMenu();
+    closeSearch();
+    onNavigate("home");
+  };
+
+  const handleNavClick = (event, item) => {
+    event.preventDefault();
+    closeMenu();
+    closeSearch();
+    onNavigate("home", item === "Home" ? "top" : item.toLowerCase());
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
-    <header className={`site-header ${isMenuOpen ? "menu-open" : ""}`}>
-      <a className="brand" href="#top" aria-label="NOIR ÉCLAT home" onClick={closeMenu}>
+    <>
+    <header className={`site-header ${currentPage !== "home" ? "site-header-solid" : ""} ${isMenuOpen ? "menu-open" : ""}`}>
+      <a className="brand" href="#top" aria-label="NOIR ÉCLAT home" onClick={handleHomeClick}>
         <img src="/assets/logo.png" alt="" />
       </a>
       <nav className="nav-links" aria-label="Primary navigation">
         {navItems.map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} onClick={closeMenu}>
+          <a key={item} href={`#${item.toLowerCase()}`} onClick={(event) => handleNavClick(event, item)}>
             {item}
           </a>
         ))}
       </nav>
       <div className="header-actions" aria-label="Store actions">
-        <button type="button" aria-label="Search">
-          <Icon name="search" />
+        <button
+          type="button"
+          aria-label={isSearchOpen ? "Close search" : "Search"}
+          aria-expanded={isSearchOpen}
+          onClick={() => {
+            closeMenu();
+            setIsSearchOpen((open) => !open);
+          }}
+        >
+          <Icon name={isSearchOpen ? "close" : "search"} />
         </button>
-        <button type="button" aria-label="Account">
+        <button
+          type="button"
+          aria-label="Account"
+          onClick={() => {
+            closeMenu();
+            closeSearch();
+            onNavigate("login");
+          }}
+        >
           <Icon name="user" />
         </button>
-        <button type="button" aria-label="Shopping bag" className="bag-button">
+        <button
+          type="button"
+          aria-label="Shopping bag"
+          className="bag-button"
+          onClick={() => {
+            closeMenu();
+            closeSearch();
+            onNavigate("cart");
+          }}
+        >
           <Icon name="bag" />
           <span>0</span>
         </button>
@@ -40,7 +90,10 @@ function Header() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={isMenuOpen}
           className="menu-toggle"
-          onClick={() => setIsMenuOpen((open) => !open)}
+          onClick={() => {
+            closeSearch();
+            setIsMenuOpen((open) => !open);
+          }}
         >
           <Icon name={isMenuOpen ? "close" : "menu"} />
         </button>
@@ -52,6 +105,27 @@ function Header() {
         onClick={closeMenu}
       />
     </header>
+    <aside className={`search-panel ${isSearchOpen ? "open" : ""}`} aria-hidden={!isSearchOpen}>
+      <form className="search-form" role="search" onSubmit={handleSearchSubmit}>
+        <label htmlFor="site-search">Search Noir Eclat</label>
+        <div>
+          <input
+            id="site-search"
+            type="search"
+            value={searchQuery}
+            placeholder="Search jewelry, perfume, or styling"
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
+          <button type="submit" aria-label="Submit search">
+            <Icon name="search" />
+          </button>
+        </div>
+      </form>
+      <button type="button" className="search-close" aria-label="Close search" onClick={closeSearch}>
+        <Icon name="close" />
+      </button>
+    </aside>
+    </>
   );
 }
 
@@ -252,17 +326,100 @@ function Footer() {
   );
 }
 
+function HomePage() {
+  return (
+    <main>
+      <Hero />
+      <Collection />
+      <Story />
+      <Lookbook />
+      <SocialProof />
+    </main>
+  );
+}
+
+function LoginPage({ onNavigateHome }) {
+  return (
+    <main className="mock-page auth-page section-reveal">
+      <section className="mock-page-panel">
+        <p className="eyebrow">Client Profile</p>
+        <h1>Welcome Back</h1>
+        <form className="auth-form" onSubmit={(event) => event.preventDefault()}>
+          <label>
+            Email Address
+            <input type="email" placeholder="client@example.com" />
+          </label>
+          <label>
+            Password
+            <input type="password" placeholder="Password" />
+          </label>
+          <button type="submit" className="outline-button">
+            Sign In <Icon name="arrow" />
+          </button>
+        </form>
+        <button type="button" className="text-link mock-page-link" onClick={onNavigateHome}>
+          Back to Collection
+        </button>
+      </section>
+    </main>
+  );
+}
+
+function CartPage({ onNavigateHome }) {
+  return (
+    <main className="mock-page cart-page section-reveal">
+      <section className="mock-page-panel empty-cart">
+        <div className="empty-cart-icon">
+          <Icon name="bag" />
+          <span>0</span>
+        </div>
+        <p className="eyebrow">Shopping Bag</p>
+        <h1>Your Bag Is Empty</h1>
+        <p>Explore the collection and choose a piece to begin your order.</p>
+        <button type="button" className="outline-button" onClick={onNavigateHome}>
+          Explore Collection <Icon name="arrow" />
+        </button>
+      </section>
+    </main>
+  );
+}
+
+function AppContent({ page, onNavigate }) {
+  if (page === "login") {
+    return <LoginPage onNavigateHome={() => onNavigate("home", "collection")} />;
+  }
+
+  if (page === "cart") {
+    return <CartPage onNavigateHome={() => onNavigate("home", "collection")} />;
+  }
+
+  return <HomePage />;
+}
+
 export default function App() {
+  const [page, setPage] = useState("home");
+
+  const navigate = (nextPage, targetId = "top") => {
+    setPage(nextPage);
+
+    if (nextPage !== "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      const target = document.querySelector(`#${targetId}`);
+
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  };
+
   return (
     <>
-      <Header />
-      <main>
-        <Hero />
-        <Collection />
-        <Story />
-        <Lookbook />
-        <SocialProof />
-      </main>
+      <Header currentPage={page} onNavigate={navigate} />
+      <AppContent page={page} onNavigate={navigate} />
       <Footer />
     </>
   );
